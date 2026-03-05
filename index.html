@@ -528,7 +528,7 @@
    </footer>
   </div>
   <script>
-    // Generate floating particles
+    // === ANIMASI PARTICLES LATAR BELAKANG ===
     function createParticles() {
       const container = document.getElementById('particles-container');
       if (!container) return;
@@ -546,14 +546,12 @@
       }
     }
 
-    // Initialize particles on load
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', createParticles);
     } else {
       createParticles();
     }
 
-    // Recreate particles on resize for responsiveness
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
@@ -566,18 +564,14 @@
       }, 250);
     });
   
-    let currentSlide = 0;
-    const totalSlides = 4;
-    const autoPlayInterval = 5000; // 5 detik
-
-// === GOOGLE DRIVE SLIDESHOW LOGIC ===
-    // MASUKKAN URL WEB APP DARI GOOGLE APPS SCRIPT DI SINI
+    // === GOOGLE DRIVE SLIDESHOW LOGIC ===
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyVkq7JE3plPu3X0jGD08_pZ2jZfWcE_ls0Z6zmW6TYmd3lBKOBQV9Jgl9Bq8ipZyBYxQ/exec';
 
+    // Deklarasi variabel HANYA SATU KALI
     let currentSlide = 0;
     let totalSlides = 0;
     let autoPlayTimer;
-    const autoPlayInterval = 5000; // 5 detik
+    const autoPlayInterval = 5000; 
 
     async function fetchGoogleDrivePhotos() {
       try {
@@ -589,7 +583,6 @@
         const btnPrev = document.getElementById('carousel-prev');
         const btnNext = document.getElementById('carousel-next');
 
-        // Bersihkan loading state
         slidesWrapper.innerHTML = '';
         dotsWrapper.innerHTML = '';
 
@@ -605,20 +598,16 @@
 
         totalSlides = imageUrls.length;
 
-        // Render Gambar dan Titik Navigasi
         imageUrls.forEach((url, index) => {
-          // Buat elemen slide
           const slideDiv = document.createElement('div');
           slideDiv.className = `carousel-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 ${index === 0 ? 'active opacity-100 z-10' : 'opacity-0 z-0'}`;
           slideDiv.innerHTML = `<img src="${url}" alt="Foto Galeri ${index + 1}" class="w-full h-full object-cover">`;
           slidesWrapper.appendChild(slideDiv);
 
-          // Buat elemen dot indicator
           const dotBtn = document.createElement('button');
           dotBtn.className = `carousel-dot w-3 h-3 rounded-full ${index === 0 ? 'active bg-blue-600 scale-125' : 'bg-blue-300'}`;
           dotBtn.setAttribute('data-index', index);
           
-          // Event untuk klik dot
           dotBtn.addEventListener('click', () => {
             showSlide(index);
             resetAutoPlay();
@@ -627,19 +616,15 @@
           dotsWrapper.appendChild(dotBtn);
         });
 
-        // Tampilkan tombol next/prev jika foto lebih dari 1
         if (totalSlides > 1) {
           btnPrev.classList.remove('hidden');
           btnNext.classList.remove('hidden');
           
-          // Setup tombol navigasi
           btnNext.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
           btnPrev.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-          // Mulai Auto Play
           startAutoPlay();
           
-          // Pause autoplay saat mouse di atas gambar
           const container = document.querySelector('.carousel-container');
           container.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
           container.addEventListener('mouseleave', startAutoPlay);
@@ -651,7 +636,6 @@
       }
     }
 
-    // Fungsi untuk berganti slide
     function showSlide(index) {
       if (index >= totalSlides) currentSlide = 0;
       else if (index < 0) currentSlide = totalSlides - 1;
@@ -692,9 +676,9 @@
       startAutoPlay();
     }
 
-    // Panggil fungsi saat website pertama kali dimuat
     document.addEventListener('DOMContentLoaded', fetchGoogleDrivePhotos);
 
+    // === ELEMENT SDK CONFIG ===
     const defaultConfig = {
       main_title: "Informasi Penting Komite Sekolah",
       welcome_text: "Assalamualaikum Warahmatullahi Wabarakatuh\n\nBapak/Ibu Orang Tua Murid yang kami hormati. Website ini memuat informasi resmi terkait program partisipasi sekolah demi kenyamanan dan kelancaran proses belajar mengajar anak-anak kita tercinta.",
@@ -713,73 +697,32 @@
       const welcomeText = document.getElementById('welcome-text');
       const scheduleDate = document.getElementById('schedule-date');
       
-      if (mainTitle) {
-        mainTitle.textContent = config.main_title || defaultConfig.main_title;
-      }
-      
+      if (mainTitle) mainTitle.textContent = config.main_title || defaultConfig.main_title;
       if (welcomeText) {
         const text = config.welcome_text || defaultConfig.welcome_text;
         welcomeText.innerHTML = `<span class="text-2xl">🤲</span><br><br><em>${text.replace(/\n/g, '<br>')}</em>`;
       }
+      if (scheduleDate) scheduleDate.textContent = config.schedule_date || defaultConfig.schedule_date;
       
-      if (scheduleDate) {
-        scheduleDate.textContent = config.schedule_date || defaultConfig.schedule_date;
-      }
-
-      // Apply colors
-      const primaryColor = config.primary_color || defaultConfig.primary_color;
-      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
-      const accentColor = config.accent_color || defaultConfig.accent_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const bgColor = config.background_color || defaultConfig.background_color;
-      
-      document.documentElement.style.setProperty('--primary-color', primaryColor);
-      document.documentElement.style.setProperty('--secondary-color', secondaryColor);
-      document.documentElement.style.setProperty('--accent-color', accentColor);
-      
-      // Apply font
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      const baseFontStack = 'sans-serif';
-      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
-      
-      // Apply font size
-      const baseSize = config.font_size || defaultConfig.font_size;
-      document.documentElement.style.fontSize = `${baseSize}px`;
+      document.documentElement.style.setProperty('--primary-color', config.primary_color || defaultConfig.primary_color);
+      document.documentElement.style.setProperty('--secondary-color', config.secondary_color || defaultConfig.secondary_color);
+      document.documentElement.style.setProperty('--accent-color', config.accent_color || defaultConfig.accent_color);
+      document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+      document.documentElement.style.fontSize = `${config.font_size || defaultConfig.font_size}px`;
     }
 
     function mapToCapabilities(config) {
       return {
         recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
-          },
-          {
-            get: () => config.primary_color || defaultConfig.primary_color,
-            set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
-          },
-          {
-            get: () => config.secondary_color || defaultConfig.secondary_color,
-            set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
-          }
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.secondary_color || defaultConfig.secondary_color, set: (v) => { config.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); } },
+          { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
         ],
         borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
-        }
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
       };
     }
 
@@ -792,12 +735,7 @@
     }
 
     if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
+      window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities, mapToEditPanelValues });
     }
   </script>
  </body>
