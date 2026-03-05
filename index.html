@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pengumuman Komite SD Negeri 1 Pangkalpinang</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
     .gradient-hero {
@@ -25,8 +26,62 @@
       justify-content: center;
       font-size: 28px;
     }
-    
-    /* Background Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce-gentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes slide-left-right {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(15px); }
+    }
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+    @keyframes flip-card {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    .animate-bounce-gentle {
+      animation: bounce-gentle 2s ease-in-out infinite;
+    }
+    .animate-spin-slow {
+      animation: spin-slow 3s linear infinite;
+    }
+    .animate-slide-x {
+      animation: slide-left-right 2s ease-in-out infinite;
+    }
+    .animate-pulse-scale {
+      animation: pulse-scale 1.5s ease-in-out infinite;
+    }
+    .animate-flip {
+      animation: flip-card 2s ease-in-out infinite;
+    }
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+    .animate-delay-5 { animation-delay: 0.5s; opacity: 0; }
+    .animate-delay-6 { animation-delay: 0.6s; opacity: 0; }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+    }
     @keyframes float-bubble-1 {
       0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.1; }
       25% { transform: translateY(-30px) translateX(20px); opacity: 0.15; }
@@ -49,22 +104,27 @@
       0%, 100% { opacity: 0.5; }
       50% { opacity: 0.8; }
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    
+    /* ANIMASI LATAR BELAKANG BERGERAK */
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
     .animated-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, #dbeafe 50%, #e2e8f0 100%);
+      background-size: 400% 400%;
+      animation: gradient-move 15s ease infinite;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
     }
+
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -103,8 +163,6 @@
       pointer-events: none;
       animation: shimmer 3s ease-in-out infinite;
     }
-
-    /* Carousel Styles */
     .carousel-container {
       perspective: 1000px;
       position: relative;
@@ -115,7 +173,7 @@
       display: none;
       width: 100%;
       height: 100%;
-      animation: fadeInUp 0.5s ease-out forwards;
+      animation: fadeInUp 0.8s ease-out forwards;
     }
     .carousel-slide.active {
       display: block;
@@ -127,6 +185,7 @@
     }
     .carousel-nav-button {
       transition: all 0.3s ease;
+      animation: pulse-glow 2s infinite;
     }
     .carousel-nav-button:hover {
       transform: scale(1.1);
@@ -135,9 +194,6 @@
     .carousel-dot {
       transition: all 0.3s ease;
       cursor: pointer;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
     }
     .carousel-dot.active {
       background: #3b82f6;
@@ -149,19 +205,25 @@
     .carousel-dot:hover {
       background: rgba(59, 130, 246, 0.7);
     }
+    .badge-animating {
+      display: inline-block;
+      animation: slideInRight 0.6s ease-out;
+    }
   </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-slate-50 overflow-auto relative">
-  
+     
   <div class="animated-bg">
    <div class="bubble bubble-1"></div>
    <div class="bubble bubble-2"></div>
    <div class="bubble bubble-3"></div>
    <div id="particles-container"></div>
   </div>
-
+  
   <div class="w-full min-h-full relative z-10">
-   
+      
    <header class="gradient-hero text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -172,52 +234,98 @@
      </svg>
     </div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24">
-     <div class="text-center">
-      <div class="inline-flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full mb-4 sm:mb-6 backdrop-blur-sm">
-       <svg class="w-8 sm:w-12 h-8 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" /></svg>
+     <div class="text-center animate-fade-in"><div class="inline-flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full mb-4 sm:mb-6 backdrop-blur-sm animate-bounce-gentle">
+       <svg class="w-8 sm:w-12 h-8 sm:h-12 text-white animate-spin-slow" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+       </svg>
       </div>
       <div class="inline-block bg-amber-400 text-amber-900 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4">
        📢 PENGUMUMAN RESMI
       </div>
-      <h1 id="main-title" class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-3 sm:mb-4 leading-tight">Informasi Penting Komite Sekolah</h1>
-      <p class="text-base sm:text-lg md:text-xl text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto px-2 sm:px-0">Hasil Rapat Pengurus Komite & Orang Tua Murid<br><span class="font-semibold text-white">SD Negeri 1 Pangkalpinang</span><br><span class="text-amber-300">11–13 Februari 2026</span></p>
+      <h1 id="main-title" class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-3 sm:mb-4 leading-tight animate-slide-x">Informasi Penting Komite Sekolah</h1>
+      <p class="text-base sm:text-lg md:text-xl text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto px-2 sm:px-0">Hasil Rapat Pengurus Komite &amp; Orang Tua Murid<br><span class="font-semibold text-white">SD Negeri 1 Pangkalpinang</span><br><span class="text-amber-300">11–13 Februari 2026</span></p>
       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 max-w-3xl mx-auto border border-white/20 mx-2 sm:mx-auto">
        <p id="welcome-text" class="text-blue-50 leading-relaxed text-xs sm:text-sm"><span class="text-xl sm:text-2xl">🤲</span><br><br><em>Assalamualaikum Warahmatullahi Wabarakatuh</em><br><br>
          Bapak/Ibu Orang Tua Murid yang kami hormati. Website ini memuat informasi resmi terkait program partisipasi sekolah demi kenyamanan dan kelancaran proses belajar mengajar anak-anak kita tercinta.</p>
       </div>
      </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-     <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" /></svg>
+    </div><div class="absolute bottom-0 left-0 right-0">
+     <svg viewbox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" />
+     </svg>
     </div>
    </header>
-
+   
    <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent">
     <div class="max-w-5xl mx-auto">
-     <div class="text-center mb-8 sm:mb-12"><span class="inline-block bg-blue-100 text-blue-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> LATAR BELAKANG </span>
+     <div class="text-center mb-8 sm:mb-12 animate-fade-in animate-delay-1"><span class="inline-block bg-blue-100 text-blue-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> LATAR BELAKANG </span>
       <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-2 sm:mb-3">Mengapa Kita Perlu Bergerak Bersama?</h2>
       <p class="text-slate-600 max-w-2xl mx-auto text-xs sm:text-sm px-2 sm:px-0">Berikut adalah kondisi yang sedang dihadapi sekolah kita saat ini</p>
      </div>
-     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-      <div class="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 transition-all duration-300">
-       <div class="icon-circle bg-red-100 text-red-500 mb-3 sm:mb-4" style="width: 48px; height: 48px; font-size: 24px;">👥</div>
+     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"><div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 hover:border-red-200 transition-all duration-300 animate-fade-in animate-delay-2 hover:animate-pulse-scale">
+       <div class="icon-circle bg-red-100 text-red-500 mb-3 sm:mb-4 animate-bounce-gentle" style="width: 48px; height: 48px; font-size: 24px;">
+        👥
+       </div>
        <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3">Kekurangan Tenaga Di Sekolah</h3>
-       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Saat ini sekolah kita kekurangan <strong>1 orang Guru Agama</strong> dan <strong>1 orang Petugas Kebersihan</strong>.</p>
-      </div>
-      <div class="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 transition-all duration-300">
-       <div class="icon-circle bg-amber-100 text-amber-600 mb-3 sm:mb-4" style="width: 48px; height: 48px; font-size: 24px;">⚖️</div>
+       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Saat ini sekolah kita kekurangan <strong>1 orang Guru Agama</strong> (karena guru sebelumnya pensiun) dan <strong>1 orang Petugas Kebersihan</strong> (karena petugas lama telah diangkat menjadi PPPK dan berganti jabatan).</p>
+      </div><div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 hover:border-amber-200 transition-all duration-300 animate-fade-in animate-delay-3 hover:animate-pulse-scale">
+       <div class="icon-circle bg-amber-100 text-amber-600 mb-3 sm:mb-4 animate-spin-slow" style="width: 48px; height: 48px; font-size: 24px;">
+        ⚖️
+       </div>
        <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3">Kendala Regulasi Perekrutan</h3>
-       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Berdasarkan <strong>UU No. 20 Tahun 2023</strong> tentang ASN, instansi pusat maupun daerah dilarang merekrut tenaga honorer baru.</p>
-      </div>
-      <div class="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 transition-all duration-300">
-       <div class="icon-circle bg-blue-100 text-blue-500 mb-3 sm:mb-4" style="width: 48px; height: 48px; font-size: 24px;">📋</div>
+       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Berdasarkan <strong>UU No. 20 Tahun 2023</strong> tentang ASN (Pasal 65 &amp; 67), instansi pusat maupun daerah saat ini <strong>dilarang merekrut tenaga honorer</strong> atau pegawai non-ASN baru.</p>
+      </div><div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 card-shadow border border-slate-100 hover:border-blue-200 transition-all duration-300 animate-fade-in animate-delay-4 hover:animate-pulse-scale">
+       <div class="icon-circle bg-blue-100 text-blue-500 mb-3 sm:mb-4 animate-flip" style="width: 48px; height: 48px; font-size: 24px;">
+        📋
+       </div>
        <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3">Kendala Syarat Dana BOS</h3>
-       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Sesuai aturan, Dana BOS tidak bisa digunakan untuk membayar guru honorer yang belum masuk Dapodik atau memiliki NUPTK.</p>
+       <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Sesuai <strong>Permendikdasmen No. 8 Tahun 2025</strong>, Dana BOS tidak bisa digunakan untuk membayar guru honorer yang belum masuk Dapodik atau belum memiliki NUPTK. <strong>Ibu Umi</strong> (Guru Agama pengganti) belum memenuhi syarat tersebut.</p>
       </div>
      </div>
     </div>
    </section>
-
+   
+   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-emerald-50">
+    <div class="max-w-5xl mx-auto">
+     <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow overflow-hidden animate-fade-in animate-delay-5">
+      <div class="bg-emerald-600 px-4 sm:px-8 py-4 sm:py-6">
+       <div class="flex items-center gap-3 sm:gap-4">
+        <div class="w-12 sm:w-14 h-12 sm:h-14 bg-white/20 rounded-full flex items-center justify-center text-2xl sm:text-3xl animate-pulse-scale">
+         💝
+        </div>
+        <div class="text-left"><span class="text-emerald-100 text-xs sm:text-sm font-medium">SOLUSI &amp; PROGRAM</span>
+         <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white">Program Sumbangan Sukarela</h2>
+        </div>
+       </div>
+      </div>
+      <div class="p-4 sm:p-8">
+       <p class="text-slate-600 mb-6 sm:mb-8 leading-relaxed text-xs sm:text-base">Untuk mengatasi kendala di atas dan memastikan anak-anak tetap mendapatkan pendidikan Agama serta lingkungan sekolah yang bersih, Komite menggalang sumbangan sukarela dengan ketentuan:</p>
+       <div class="space-y-4 sm:space-y-6"><div class="flex gap-3 sm:gap-4 items-start hover:translate-x-2 transition-transform">
+         <div class="w-10 sm:w-12 h-10 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0 animate-bounce-gentle"><span class="text-xl sm:text-2xl">✅</span>
+         </div>
+         <div>
+          <h4 class="font-bold text-slate-800 mb-1 text-sm sm:text-base">Bebas &amp; Tidak Memaksa</h4>
+          <p class="text-slate-600 text-xs sm:text-sm">Sumbangan <strong>100% sukarela</strong>. Nominal tidak ditetapkan, dan <strong>tidak ada paksaan</strong> bagi orang tua yang tidak berkenan atau tidak mampu menyumbang.</p>
+         </div>
+        </div><div class="flex gap-3 sm:gap-4 items-start hover:translate-x-2 transition-transform">
+         <div class="w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 animate-spin-slow"><span class="text-xl sm:text-2xl">📦</span>
+         </div>
+         <div>
+          <h4 class="font-bold text-slate-800 mb-1 text-sm sm:text-base">Pelaksanaan Praktis</h4>
+          <p class="text-slate-600 text-xs sm:text-sm">Penggalangan dilakukan dengan cara perwakilan Komite membawa <strong>Kotak Sumbangan</strong> langsung ke kelas-kelas anak kita.</p>
+         </div>
+        </div><div class="flex gap-3 sm:gap-4 items-start hover:translate-x-2 transition-transform">
+         <div class="w-10 sm:w-12 h-10 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 animate-flip"><span class="text-xl sm:text-2xl">📅</span>
+         </div>
+         <div>
+          <h4 class="font-bold text-slate-800 mb-1 text-sm sm:text-base">Jadwal Rutin</h4>
+          <p class="text-slate-600 text-xs sm:text-sm">Direncanakan setiap <strong>hari Senin di awal bulan</strong>.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
    <section class="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -228,87 +336,165 @@
      </svg>
     </div>
     <div class="max-w-5xl mx-auto relative z-10">
-     <div class="text-center mb-8 sm:mb-12">
-      <span class="inline-block bg-blue-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 📸 GALERI KEGIATAN </span>
-      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 sm:mb-3">Sosialisasi & Kegiatan Berlangsung</h2>
+     <div class="text-center mb-8 sm:mb-12 animate-fade-in animate-delay-1">
+      <span class="badge-animating inline-block bg-blue-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 📸 GALERI KEGIATAN </span>
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 sm:mb-3">Sosialisasi &amp; Kegiatan Berlangsung</h2>
       <p class="text-slate-300 max-w-2xl mx-auto text-xs sm:text-sm px-2 sm:px-0">Lihat momen-momen berharga dari kegiatan sosialisasi yang telah kami laksanakan bersama orang tua murid</p>
      </div>
-     
-     <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow overflow-hidden">
-      
-      <div id="loading-state" class="h-64 sm:h-80 md:h-[500px] flex items-center justify-center bg-slate-800 text-white flex-col">
-        <svg class="animate-spin h-10 w-10 text-blue-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-        <p>Mengambil foto dari Google Drive...</p>
-      </div>
-
-      <div id="gallery-carousel" class="carousel-container h-64 sm:h-80 md:h-[500px] relative bg-slate-800 flex items-center justify-center hidden">
-       <button id="carousel-prev" class="carousel-nav-button absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-blue-600 text-white w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center shadow-lg border border-white/20">
-        <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
+     <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow overflow-hidden animate-fade-in animate-delay-2">
+         
+      <div class="carousel-container h-64 sm:h-80 md:h-96 relative bg-slate-200 flex items-center justify-center">
+          
+       <div id="dynamic-slides-wrapper" class="w-full h-full flex items-center justify-center">
+         <div class="flex flex-col items-center animate-pulse">
+           <svg class="w-10 h-10 text-blue-500 mb-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+           <p class="text-slate-500 font-medium">Memuat foto dari Google Drive...</p>
+         </div>
+       </div>
+       
+       <button id="carousel-prev" class="carousel-nav-button absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-blue-500 hover:bg-blue-600 text-white w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center shadow-lg hidden">
+        <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
        </button> 
-       <button id="carousel-next" class="carousel-nav-button absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-blue-600 text-white w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center shadow-lg border border-white/20">
-        <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
+       <button id="carousel-next" class="carousel-nav-button absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-blue-500 hover:bg-blue-600 text-white w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center shadow-lg hidden">
+        <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
        </button>
       </div>
-
-      <div id="carousel-indicators" class="bg-gradient-to-r from-slate-100 to-slate-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-center gap-3 hidden">
-       </div>
+      
+      <div id="dynamic-dots-wrapper" class="bg-gradient-to-r from-slate-100 to-slate-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center gap-2">
+      </div>
+      
+      <div class="bg-gradient-to-r from-slate-100 to-slate-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center gap-2">
+       <button class="carousel-dot active" data-index="0"></button> <button class="carousel-dot" data-index="1"></button> <button class="carousel-dot" data-index="2"></button> <button class="carousel-dot" data-index="3"></button>
+      </div>
      </div>
-
+     
      <div class="mt-4 sm:mt-6 md:mt-8 grid sm:grid-cols-3 gap-3">
-      <div class="bg-blue-500/10 border border-blue-500/20 rounded-lg sm:rounded-xl p-3">
+      <div class="bg-blue-500/10 border border-blue-500/20 rounded-lg sm:rounded-xl p-3 animate-fade-in animate-delay-3 hover:scale-105 transition-transform">
        <p class="text-blue-400 font-semibold text-xs">📊 Total Peserta</p>
        <p class="text-white text-lg sm:text-2xl font-bold">200+ Orang</p>
       </div>
-      <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg sm:rounded-xl p-3">
+      <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg sm:rounded-xl p-3 animate-fade-in animate-delay-4 hover:scale-105 transition-transform">
        <p class="text-emerald-400 font-semibold text-xs">✅ Kesuksesan Rapat</p>
        <p class="text-white text-lg sm:text-2xl font-bold">100%</p>
       </div>
-      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg sm:rounded-xl p-3">
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg sm:rounded-xl p-3 animate-fade-in animate-delay-5 hover:scale-105 transition-transform">
        <p class="text-amber-400 font-semibold text-xs">🎯 Program Aktif</p>
        <p class="text-white text-lg sm:text-2xl font-bold">4 Inisiatif</p>
       </div>
      </div>
     </div>
    </section>
-
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-slate-50 relative z-10">
+   
+   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-8 sm:mb-12">
-        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 📄 DOKUMEN PENDUKUNG </span>
-        <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-2 sm:mb-3">Transparansi & Legalitas</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto text-xs sm:text-sm px-2 sm:px-0">Akses dan unduh dokumen resmi terkait kepengurusan dan kegiatan komite sekolah</p>
-      </div>
-      
-      <div class="bg-white rounded-2xl p-5 sm:p-6 card-shadow border border-slate-100 flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
-          <div class="bg-indigo-50 text-indigo-600 p-3 rounded-xl text-2xl flex-shrink-0">📧</div>
-          <div>
-            <h3 class="font-bold text-slate-800 text-base sm:text-lg mb-1">Surat Undangan Rapat</h3>
-            <p class="text-slate-500 text-xs sm:text-sm mb-4 leading-relaxed">Surat resmi undangan sosialisasi program komite kepada seluruh orang tua/wali murid.</p>
-            
-            <a href="https://drive.google.com/file/d/1uc3KIjr-svyI5giRMxovK-1kSRmdoAfZ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-sm">
-              Lihat Dokumen
-            </a>
-          </div>
+     <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 items-center">
+      <div><span class="inline-block bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> KOMITMEN KAMI </span>
+       <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-3 sm:mb-4">Laporan Terbuka &amp; Transparan</h2>
+       <p class="text-slate-600 mb-4 sm:mb-6 text-xs sm:text-base">Kami berkomitmen untuk menjaga kepercayaan Bapak/Ibu dengan pelaporan yang jelas dan dapat diakses.</p>
+       <div class="space-y-3 sm:space-y-4">
+        <div class="flex items-center gap-2 sm:gap-3">
+         <div class="w-7 sm:w-8 h-7 sm:h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">
+          1
+         </div>
+         <p class="text-slate-700 text-xs sm:text-base">Pemasukan &amp; pengeluaran kas dicatat <strong>rutin setiap bulan</strong></p>
         </div>
-
-        <div class="bg-white rounded-2xl p-5 sm:p-6 card-shadow border border-slate-100 flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
-          <div class="bg-indigo-50 text-indigo-600 p-3 rounded-xl text-2xl flex-shrink-0">📜</div>
-          <div>
-            <h3 class="font-bold text-slate-800 text-base sm:text-lg mb-1">SK Pengurus Komite</h3>
-            <p class="text-slate-500 text-xs sm:text-sm mb-4 leading-relaxed">Surat Keputusan (SK) Kepala Sekolah tentang penetapan pengurus komite periode berjalan.</p>
-            
-            <a href="https://drive.google.com/file/d/1cXi9hGGD2LqkkHwkj1IGBh2bCeww0Rdu/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-sm">
-              Lihat Dokumen
-            </a>
-          </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+         <div class="w-7 sm:w-8 h-7 sm:h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">
+          2
+         </div>
+         <p class="text-slate-700 text-xs sm:text-base">Bendahara membagikan laporan via <strong>Grup WA Bendahara Paguyuban</strong></p>
         </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+         <div class="w-7 sm:w-8 h-7 sm:h-8 bg-indigo-500 text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">
+          3
+         </div>
+         <p class="text-slate-700 text-xs sm:text-base">Laporan diteruskan ke <strong>Grup Paguyuban masing-masing kelas</strong></p>
+        </div>
+       </div>
       </div>
+      <div class="relative">
+       <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white">
+        <div class="text-center">
+         <div class="w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4"><span class="text-4xl sm:text-5xl">📊</span>
+         </div>
+         <h3 class="text-lg sm:text-xl font-bold mb-2">Alur Pelaporan</h3>
+         <div class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-indigo-100">
+          <div class="bg-white/10 rounded-lg p-2 sm:p-3">
+           📝 Pencatatan Bulanan
+          </div>
+          <div class="text-lg sm:text-2xl">
+           ↓
+          </div>
+          <div class="bg-white/10 rounded-lg p-2 sm:p-3">
+           💬 Grup WA Bendahara
+          </div>
+          <div class="text-lg sm:text-2xl">
+           ↓
+          </div>
+          <div class="bg-white/10 rounded-lg p-2 sm:p-3">
+           👨‍👩‍👧‍👦 Semua Orang Tua
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
    </section>
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10">
-    <div class="max-w-3xl mx-auto">
-     <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl sm:rounded-3xl card-shadow p-5 sm:p-8">
-      <div class="inline-flex items-center justify-center w-14 sm:w-20 h-14 sm:h-20 bg-white/20 rounded-full mb-4"><span class="text-3xl sm:text-4xl">💬</span>
+   
+   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10 animate-fade-in animate-delay-3">
+    <div class="max-w-5xl mx-auto">
+     <div class="text-center mb-8">
+      <div class="inline-block bg-blue-100 text-blue-800 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 shadow-sm">
+        📂 DOKUMEN RESMI
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Surat Undangan &amp; SK Komite</h2>
+      <p class="text-slate-600 mt-2">Pratinjau dokumen langsung dari Google Drive</p>
+     </div>
+
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg card-shadow flex flex-col items-center">
+        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+          📄 Surat Undangan Sosialisasi Pengurus Komite
+        </h3>
+        <div class="w-full bg-slate-100 rounded-xl overflow-hidden" style="height: 400px;">
+          <iframe src="https://drive.google.com/file/d/1uc3KIjr-svyI5giRMxovK-1kSRmdoAfZ/preview" width="100%" height="100%" class="border-none" allow="autoplay"></iframe>
+        </div>
+        <a href="https://drive.google.com/file/d/1uc3KIjr-svyI5giRMxovK-1kSRmdoAfZ/view" target="_blank" class="mt-5 w-full text-center bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+          Buka di Tab Baru
+        </a>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg card-shadow flex flex-col items-center">
+        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+          📜 SK Komite
+        </h3>
+        <div class="w-full bg-slate-100 rounded-xl overflow-hidden" style="height: 400px;">
+          <iframe src="https://drive.google.com/file/d/1cXi9hGGD2LqkkHwkj1IGBh2bCeww0Rdu/preview" width="100%" height="100%" class="border-none" allow="autoplay"></iframe>
+        </div>
+        <a href="https://drive.google.com/file/d/1cXi9hGGD2LqkkHwkj1IGBh2bCeww0Rdu/view" target="_blank" class="mt-5 w-full text-center bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+          Buka di Tab Baru
+        </a>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-orange-50 relative z-10">
+    <div class="max-w-3xl mx-auto"><div class="text-center mb-10 sm:mb-12"><span class="inline-block bg-amber-100 text-amber-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 📅 JADWAL TERDEKAT </span>
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-5 sm:mb-8">Pelaksanaan Bulan Ini</h2>
+      <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow p-5 sm:p-8 border-2 border-amber-200">
+       <div class="inline-flex items-center justify-center w-16 sm:w-24 h-16 sm:h-24 bg-amber-100 rounded-full mb-4 sm:mb-6 animate-bounce-gentle"><span class="text-3xl sm:text-5xl">📅</span>
+       </div>
+       <p class="text-slate-600 mb-4 sm:mb-6 text-xs sm:text-base leading-relaxed px-2 sm:px-0">Sumbangan sukarela (uang partisipasi siswa-siswi SDANSA) yang diakomodir oleh pengurus Komite akan dilaksanakan pada:</p>
+       <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-3 sm:mb-4">
+        <p class="text-amber-100 text-xs sm:text-sm mb-1">Hari/Tanggal</p>
+        <p id="schedule-date" class="text-lg sm:text-2xl md:text-3xl font-bold">Senin, 9 Februari 2026</p>
+       </div>
+       <p class="text-xs text-slate-500 italic px-2 sm:px-4">*Jadwal dapat berubah sewaktu-waktu, informasi terbaru akan disampaikan melalui grup paguyuban kelas</p>
+      </div>
+     </div><div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl sm:rounded-3xl card-shadow p-5 sm:p-8 animate-fade-in">
+      <div class="inline-flex items-center justify-center w-14 sm:w-20 h-14 sm:h-20 bg-white/20 rounded-full mb-4 animate-pulse-scale"><span class="text-3xl sm:text-4xl">💬</span>
       </div>
       <h3 class="text-lg sm:text-2xl font-bold mb-2">Hubungi Bendahara</h3>
       <p class="text-green-100 mb-4 text-xs sm:text-sm">Untuk informasi lebih lanjut mengenai sumbangan dan transparansi kas</p>
@@ -316,31 +502,39 @@
        <p class="text-green-100 text-xs sm:text-sm mb-1">Nama</p>
        <p class="text-xl sm:text-2xl font-bold mb-4">Bu Aulia</p>
        <p class="text-green-100 text-xs sm:text-sm mb-2">WhatsApp</p><a href="https://wa.me/6281357141987" target="_blank" rel="noopener noreferrer" class="text-white text-base sm:text-lg font-bold hover:text-green-200 transition-colors flex items-center justify-center gap-2 bg-white/20 rounded-lg p-3">
-        <span>081357141987</span> </a>
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.006c-1.444 0-2.877-.363-4.239-1.079l-.306.158-3.159.98 1.005-3.068-.196-.314c-.759-1.51-1.162-3.237-1.162-5.011C6.52 3.396 9.916 0 14.106 0 18.296 0 21.692 3.396 21.692 7.586c0 4.19-3.396 7.587-7.586 7.587" />
+        </svg><span>081357141987</span> </a>
       </div>
       <p class="text-green-100 text-xs italic">Tersedia untuk membalas pesan setiap hari jam 08:00 - 20:00 WIB</p>
      </div>
     </div>
    </section>
-
-   <footer class="gradient-hero text-white py-12 sm:py-16 px-4 sm:px-6">
+   
+   <footer class="gradient-hero text-white py-12 sm:py-16 px-4 sm:px-6 relative z-10">
     <div class="max-w-3xl mx-auto text-center">
+     <div class="inline-flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-white/20 rounded-full mb-4 sm:mb-6"><span class="text-3xl sm:text-4xl">🙏</span>
+     </div>
      <h2 class="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Terima Kasih</h2>
+     <p class="text-blue-100 leading-relaxed mb-6 sm:mb-8 text-xs sm:text-base px-2 sm:px-0">Demikian informasi ini kami sampaikan. Atas perhatian, dukungan, dan kerja sama Bapak/Ibu orang tua murid SD Negeri 1 Pangkalpinang, kami ucapkan terima kasih.</p>
      <div class="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 inline-block border border-white/20">
       <p class="text-xs sm:text-sm text-blue-200 mb-2">Tertanda,</p>
       <p class="font-bold text-base sm:text-lg">Pengurus Komite</p>
       <p class="text-amber-300 font-semibold text-sm sm:text-base">SD Negeri 1 Pangkalpinang</p>
      </div>
+     <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/20">
+      <p class="text-blue-200 text-xs sm:text-sm"><em>Wassalamualaikum Warahmatullahi Wabarakatuh</em></p>
+     </div>
     </div>
    </footer>
   </div>
-
   <script>
-    // 1. Setup Background Animasi (Gelembung Partikel)
+    // Generate floating particles
     function createParticles() {
       const container = document.getElementById('particles-container');
       if (!container) return;
+      
       const particleCount = window.innerWidth < 768 ? 15 : 30;
+      
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -351,112 +545,260 @@
         container.appendChild(particle);
       }
     }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', createParticles);
-    else createParticles();
 
+    // Initialize particles on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', createParticles);
+    } else {
+      createParticles();
+    }
 
-    // 2. SETUP SLIDESHOW DARI GOOGLE DRIVE FOLDER
-    // =========================================================================
-    // PERHATIAN: Masukkan URL Web App (Google Apps Script) Anda di sini.
-    // Jika belum membuat, lihat panduan di pesan AI.
-    const APPS_SCRIPT_WEB_APP_URL = "MASUKKAN_URL_WEB_APP_ANDA_DISINI"; 
-    
-    // Masukkan ID Folder Google Drive yang berisi foto-foto
-    const DRIVE_FOLDER_ID = "MASUKKAN_ID_FOLDER_DRIVE_DISINI";
-    // =========================================================================
+    // Recreate particles on resize for responsiveness
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const container = document.getElementById('particles-container');
+        if (container) {
+          container.innerHTML = '';
+          createParticles();
+        }
+      }, 250);
+    });
+  
+    let currentSlide = 0;
+    const totalSlides = 4;
+    const autoPlayInterval = 5000; // 5 detik
+
+// === GOOGLE DRIVE SLIDESHOW LOGIC ===
+    // MASUKKAN URL WEB APP DARI GOOGLE APPS SCRIPT DI SINI
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwfY6kX5k_xY-ACSpvySFbvFhMp5bLtcegSkTMJq-JxfaMQSg25Hn0t8lWxeS5UAxQMZQ/exec';
 
     let currentSlide = 0;
-    const autoPlayInterval = 5000; 
+    let totalSlides = 0;
     let autoPlayTimer;
+    const autoPlayInterval = 5000; // 5 detik
 
-    async function fetchImagesFromFolder() {
-      const carousel = document.getElementById('gallery-carousel');
-      const indicators = document.getElementById('carousel-indicators');
-      const loadingState = document.getElementById('loading-state');
-      const prevBtn = document.getElementById('carousel-prev');
-
-      // Jika URL Web App belum diisi, kita tampilkan pesan error
-      if(APPS_SCRIPT_WEB_APP_URL === "https://script.google.com/macros/s/AKfycbxdk5mAM0DeNXl0d5Wbw44oXa5k0RvpWrzFYxPwTgoT-zBw1oXeePOGn_hDN7AcVAk9BA/exec") {
-        loadingState.innerHTML = '<p class="text-red-400 text-center px-4">URL Google Apps Script belum disetel!<br><span class="text-sm text-white">Lihat panduan untuk membuat jembatan Apps Script.</span></p>';
-        return;
-      }
-
+    async function fetchGoogleDrivePhotos() {
       try {
-        // Memanggil Apps Script untuk mendapatkan daftar ID gambar
-        const response = await fetch(`${APPS_SCRIPT_WEB_APP_URL}?folderId=${1FFMeV3d1lVoFSbUMiice237xS_tlCZbp}`);
-        const googleDriveImageIds = await response.json();
+        const response = await fetch(WEB_APP_URL);
+        const imageUrls = await response.json();
+        
+        const slidesWrapper = document.getElementById('dynamic-slides-wrapper');
+        const dotsWrapper = document.getElementById('dynamic-dots-wrapper');
+        const btnPrev = document.getElementById('carousel-prev');
+        const btnNext = document.getElementById('carousel-next');
 
-        // Sembunyikan loading, tampilkan carousel
-        loadingState.classList.add('hidden');
-        carousel.classList.remove('hidden');
-        indicators.classList.remove('hidden');
+        // Bersihkan loading state
+        slidesWrapper.innerHTML = '';
+        dotsWrapper.innerHTML = '';
 
-        if(googleDriveImageIds.length === 0) {
-          carousel.innerHTML = '<div class="text-white text-center">Folder kosong atau ID folder salah.</div>';
+        if (imageUrls.error) {
+          slidesWrapper.innerHTML = `<p class="text-red-500">Gagal memuat: ${imageUrls.error}</p>`;
           return;
         }
 
-        // Render gambar
-        googleDriveImageIds.forEach((id, index) => {
-          const slide = document.createElement('div');
-          slide.className = `carousel-slide absolute top-0 left-0 w-full h-full ${index === 0 ? 'active' : ''}`;
-          const imgUrl = `https://drive.google.com/uc?export=view&id=${id}`;
-          
-          slide.innerHTML = `
-            <div class="w-full h-full bg-slate-800 flex items-center justify-center">
-               <img src="${imgUrl}" alt="Galeri Sosialisasi ${index + 1}" class="w-full h-full object-cover shadow-lg" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat.'">
-            </div>
-          `;
-          carousel.insertBefore(slide, prevBtn);
+        if (!imageUrls || imageUrls.length === 0) {
+          slidesWrapper.innerHTML = '<p class="text-slate-500">Belum ada foto di folder Google Drive.</p>';
+          return;
+        }
 
-          const dot = document.createElement('button');
-          dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
-          dot.setAttribute('data-index', index);
-          indicators.appendChild(dot);
+        totalSlides = imageUrls.length;
+
+        // Render Gambar dan Titik Navigasi
+        imageUrls.forEach((url, index) => {
+          // Buat elemen slide
+          const slideDiv = document.createElement('div');
+          slideDiv.className = `carousel-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 ${index === 0 ? 'active opacity-100 z-10' : 'opacity-0 z-0'}`;
+          slideDiv.innerHTML = `<img src="${url}" alt="Foto Galeri ${index + 1}" class="w-full h-full object-cover">`;
+          slidesWrapper.appendChild(slideDiv);
+
+          // Buat elemen dot indicator
+          const dotBtn = document.createElement('button');
+          dotBtn.className = `carousel-dot w-3 h-3 rounded-full ${index === 0 ? 'active bg-blue-600 scale-125' : 'bg-blue-300'}`;
+          dotBtn.setAttribute('data-index', index);
+          
+          // Event untuk klik dot
+          dotBtn.addEventListener('click', () => {
+            showSlide(index);
+            resetAutoPlay();
+          });
+          
+          dotsWrapper.appendChild(dotBtn);
         });
 
-        setupCarouselEvents();
+        // Tampilkan tombol next/prev jika foto lebih dari 1
+        if (totalSlides > 1) {
+          btnPrev.classList.remove('hidden');
+          btnNext.classList.remove('hidden');
+          
+          // Setup tombol navigasi
+          btnNext.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+          btnPrev.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+
+          // Mulai Auto Play
+          startAutoPlay();
+          
+          // Pause autoplay saat mouse di atas gambar
+          const container = document.querySelector('.carousel-container');
+          container.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
+          container.addEventListener('mouseleave', startAutoPlay);
+        }
 
       } catch (error) {
-        console.error("Gagal mengambil gambar:", error);
-        loadingState.innerHTML = '<p class="text-red-400 text-center px-4">Gagal mengambil gambar.<br><span class="text-sm text-white">Pastikan URL Apps Script dan Folder ID benar, serta folder diatur ke Public.</span></p>';
+        document.getElementById('dynamic-slides-wrapper').innerHTML = '<p class="text-red-500">Terjadi kesalahan koneksi.</p>';
+        console.error('Error fetching photos:', error);
       }
     }
 
-    function setupCarouselEvents() {
-      document.getElementById('carousel-next').addEventListener('click', () => showSlide(currentSlide + 1));
-      document.getElementById('carousel-prev').addEventListener('click', () => showSlide(currentSlide - 1));
-      
-      document.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
-        dot.addEventListener('click', () => showSlide(idx));
-      });
-
-      // Mulai Autoplay
-      autoPlayTimer = setInterval(() => showSlide(currentSlide + 1), autoPlayInterval);
-      const carouselContainer = document.getElementById('gallery-carousel');
-      carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
-      carouselContainer.addEventListener('mouseleave', () => autoPlayTimer = setInterval(() => showSlide(currentSlide + 1), autoPlayInterval));
-    }
-
+    // Fungsi untuk berganti slide
     function showSlide(index) {
-      const slides = document.querySelectorAll('.carousel-slide');
-      const dots = document.querySelectorAll('.carousel-dot');
-      if(slides.length === 0) return;
-
-      if (index >= slides.length) currentSlide = 0;
-      else if (index < 0) currentSlide = slides.length - 1;
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
       else currentSlide = index;
 
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
 
-      slides[currentSlide].classList.add('active');
-      if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+      slides.forEach((slide, idx) => {
+        if (idx === currentSlide) {
+          slide.classList.add('active', 'opacity-100', 'z-10');
+          slide.classList.remove('opacity-0', 'z-0');
+        } else {
+          slide.classList.remove('active', 'opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentSlide) {
+          dot.classList.add('active', 'bg-blue-600', 'scale-125');
+          dot.classList.remove('bg-blue-300');
+        } else {
+          dot.classList.remove('active', 'bg-blue-600', 'scale-125');
+          dot.classList.add('bg-blue-300');
+        }
+      });
     }
 
-    // Jalankan fetch saat dokumen siap
-    document.addEventListener('DOMContentLoaded', fetchImagesFromFolder);
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    
+    function startAutoPlay() {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(nextSlide, autoPlayInterval);
+    }
+    function resetAutoPlay() {
+      startAutoPlay();
+    }
 
+    // Panggil fungsi saat website pertama kali dimuat
+    document.addEventListener('DOMContentLoaded', fetchGoogleDrivePhotos);
+
+    const defaultConfig = {
+      main_title: "Informasi Penting Komite Sekolah",
+      welcome_text: "Assalamualaikum Warahmatullahi Wabarakatuh\n\nBapak/Ibu Orang Tua Murid yang kami hormati. Website ini memuat informasi resmi terkait program partisipasi sekolah demi kenyamanan dan kelancaran proses belajar mengajar anak-anak kita tercinta.",
+      schedule_date: "Senin, 9 Maret 2026",
+      primary_color: "#1e3a5f",
+      secondary_color: "#059669",
+      accent_color: "#f59e0b",
+      text_color: "#1e293b",
+      background_color: "#f8fafc",
+      font_family: "Plus Jakarta Sans",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = document.getElementById('main-title');
+      const welcomeText = document.getElementById('welcome-text');
+      const scheduleDate = document.getElementById('schedule-date');
+      
+      if (mainTitle) {
+        mainTitle.textContent = config.main_title || defaultConfig.main_title;
+      }
+      
+      if (welcomeText) {
+        const text = config.welcome_text || defaultConfig.welcome_text;
+        welcomeText.innerHTML = `<span class="text-2xl">🤲</span><br><br><em>${text.replace(/\n/g, '<br>')}</em>`;
+      }
+      
+      if (scheduleDate) {
+        scheduleDate.textContent = config.schedule_date || defaultConfig.schedule_date;
+      }
+
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const bgColor = config.background_color || defaultConfig.background_color;
+      
+      document.documentElement.style.setProperty('--primary-color', primaryColor);
+      document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+      document.documentElement.style.setProperty('--accent-color', accentColor);
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      
+      // Apply font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.documentElement.style.fontSize = `${baseSize}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["welcome_text", config.welcome_text || defaultConfig.welcome_text],
+        ["schedule_date", config.schedule_date || defaultConfig.schedule_date]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
   </script>
  </body>
 </html>
