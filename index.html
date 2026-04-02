@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" class="h-full">
+<html lang="id" class="h-full scroll-smooth">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
     .gradient-hero {
       background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #3b7cb8 100%);
     }
@@ -222,9 +223,46 @@
    <div id="particles-container"></div>
   </div>
   
-  <div class="w-full min-h-full relative z-10">
+  <div class="w-full min-h-full relative z-10 pt-16">
       
-   <header class="gradient-hero text-white relative overflow-hidden">
+   <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-300">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0 font-bold text-blue-900 text-lg sm:text-xl cursor-pointer">
+          <a href="#beranda">Komite SDNSA</a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="#latar-belakang" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Latar Belakang</a>
+            <a href="#program" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Program</a>
+            <a href="#galeri" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
+            <a href="#keuangan" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Keuangan</a>
+            <a href="#dokumen" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dokumen</a>
+            <a href="#jadwal" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Kontak</a>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-blue-600 hover:bg-slate-100 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="md:hidden hidden bg-white border-t border-slate-100 absolute w-full shadow-lg" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#latar-belakang" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Latar Belakang</a>
+        <a href="#program" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Program</a>
+        <a href="#galeri" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Galeri</a>
+        <a href="#keuangan" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Keuangan</a>
+        <a href="#dokumen" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Dokumen</a>
+        <a href="#jadwal" class="text-slate-600 hover:text-blue-600 hover:bg-slate-50 block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+      </div>
+    </div>
+   </nav>
+
+   <header id="beranda" class="gradient-hero text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs>
        <pattern id="grid" width="40" height="40" patternunits="userSpaceOnUse">
@@ -234,11 +272,18 @@
      </svg>
     </div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24">
-     <div class="text-center animate-fade-in"><div class="inline-flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full mb-4 sm:mb-6 backdrop-blur-sm animate-bounce-gentle">
-       <svg class="w-8 sm:w-12 h-8 sm:h-12 text-white animate-spin-slow" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
-       </svg>
+     <div class="text-center animate-fade-in">
+         
+      <div class="flex justify-center items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div class="w-16 sm:w-24 h-16 sm:h-24 bg-white rounded-full p-1 shadow-xl flex items-center justify-center animate-bounce-gentle">
+          <img src="logo SD Negeri 1.jpg" alt="Logo SD Negeri 1" class="w-full h-full object-contain rounded-full">
+        </div>
+        <div class="w-16 sm:w-24 h-16 sm:h-24 bg-white rounded-full p-1 shadow-xl flex items-center justify-center animate-bounce-gentle" style="animation-delay: 0.2s;">
+          <img src="logo Komite SD Negeri 1.png" alt="Logo Komite SD Negeri 1" class="w-full h-full object-contain rounded-full">
+        </div>
       </div>
-      <div class="inline-block bg-amber-400 text-amber-900 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4">
+
+      <div class="inline-block bg-amber-400 text-amber-900 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4 shadow-sm">
        📢 PENGUMUMAN RESMI
       </div>
       <h1 id="main-title" class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-3 sm:mb-4 leading-tight animate-slide-x">Informasi Penting Komite Sekolah</h1>
@@ -254,7 +299,7 @@
     </div>
    </header>
    
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent">
+   <section id="latar-belakang" class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent pt-20 -mt-8">
     <div class="max-w-5xl mx-auto">
      <div class="text-center mb-8 sm:mb-12 animate-fade-in animate-delay-1"><span class="inline-block bg-blue-100 text-blue-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> LATAR BELAKANG </span>
       <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-2 sm:mb-3">Mengapa Kita Perlu Bergerak Bersama?</h2>
@@ -283,7 +328,7 @@
     </div>
    </section>
    
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-emerald-50">
+   <section id="program" class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-emerald-50 pt-20 -mt-8">
     <div class="max-w-5xl mx-auto">
      <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow overflow-hidden animate-fade-in animate-delay-5">
       <div class="bg-emerald-600 px-4 sm:px-8 py-4 sm:py-6">
@@ -326,7 +371,7 @@
     </div>
    </section>
    
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900 relative overflow-hidden">
+   <section id="galeri" class="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900 relative overflow-hidden pt-20 -mt-8">
     <div class="absolute inset-0 opacity-10">
      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs>
        <pattern id="grid-dark" width="40" height="40" patternunits="userSpaceOnUse">
@@ -362,10 +407,6 @@
       
       <div id="dynamic-dots-wrapper" class="bg-gradient-to-r from-slate-100 to-slate-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center gap-2">
       </div>
-      
-      <div class="bg-gradient-to-r from-slate-100 to-slate-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center gap-2">
-       <button class="carousel-dot active" data-index="0"></button> <button class="carousel-dot" data-index="1"></button> <button class="carousel-dot" data-index="2"></button> <button class="carousel-dot" data-index="3"></button>
-      </div>
      </div>
      
      <div class="mt-4 sm:mt-6 md:mt-8 grid sm:grid-cols-3 gap-3">
@@ -385,7 +426,7 @@
     </div>
    </section>
    
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10">
+   <section id="transparansi" class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10 pt-20 -mt-8">
     <div class="max-w-5xl mx-auto">
      <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 items-center">
       <div><span class="inline-block bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> KOMITMEN KAMI </span>
@@ -441,8 +482,40 @@
      </div>
     </div>
    </section>
+
+   <section id="keuangan" class="py-12 sm:py-16 px-4 sm:px-6 bg-slate-100 relative overflow-hidden pt-20 -mt-8">
+    <div class="max-w-5xl mx-auto relative z-10">
+     <div class="text-center mb-8 sm:mb-12 animate-fade-in animate-delay-1">
+      <span class="badge-animating inline-block bg-emerald-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 💰 LAPORAN KEUANGAN </span>
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-2 sm:mb-3">Transparansi Dana Komite</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto text-xs sm:text-sm px-2 sm:px-0">Bukti catatan kas, struk pengeluaran, dan bukti transfer untuk operasional sekolah</p>
+     </div>
+     
+     <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow overflow-hidden animate-fade-in animate-delay-2 border border-slate-200">
+      <div class="carousel-container h-72 sm:h-96 md:h-[500px] relative bg-slate-200 flex items-center justify-center">
+          
+       <div id="financial-slides-wrapper" class="w-full h-full flex items-center justify-center bg-slate-800">
+         <div class="flex flex-col items-center animate-pulse">
+           <svg class="w-10 h-10 text-emerald-500 mb-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+           <p class="text-slate-300 font-medium">Memuat laporan dari Google Drive...</p>
+         </div>
+       </div>
+       
+       <button id="financial-carousel-prev" class="carousel-nav-button absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-emerald-500 hover:bg-emerald-600 text-white w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center shadow-lg hidden">
+        <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
+       </button> 
+       <button id="financial-carousel-next" class="carousel-nav-button absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-emerald-500 hover:bg-emerald-600 text-white w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center shadow-lg hidden">
+        <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
+       </button>
+      </div>
+      
+      <div id="financial-dots-wrapper" class="bg-slate-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center gap-2 border-t border-slate-200">
+      </div>
+     </div>
+    </div>
+   </section>
    
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10 animate-fade-in animate-delay-3">
+   <section id="dokumen" class="py-12 sm:py-16 px-4 sm:px-6 bg-transparent relative z-10 animate-fade-in animate-delay-3 pt-20 -mt-8">
     <div class="max-w-5xl mx-auto">
      <div class="text-center mb-8">
       <div class="inline-block bg-blue-100 text-blue-800 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 shadow-sm">
@@ -480,7 +553,7 @@
     </div>
    </section>
 
-   <section class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-orange-50 relative z-10">
+   <section id="jadwal" class="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-transparent to-orange-50 relative z-10 pt-20 -mt-8">
     <div class="max-w-3xl mx-auto"><div class="text-center mb-10 sm:mb-12"><span class="inline-block bg-amber-100 text-amber-700 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-full mb-3 sm:mb-4"> 📅 JADWAL TERDEKAT </span>
       <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 mb-5 sm:mb-8">Pelaksanaan Bulan Ini</h2>
       <div class="bg-white rounded-2xl sm:rounded-3xl card-shadow p-5 sm:p-8 border-2 border-amber-200">
@@ -528,6 +601,25 @@
    </footer>
   </div>
   <script>
+    // === MENU MOBILE NAVBAR ===
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      
+      // Toggle menu ketika tombol diklik
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+      
+      // Sembunyikan menu saat link diklik (khusus versi mobile)
+      const mobileLinks = menu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+        });
+      });
+    });
+
     // === ANIMASI PARTICLES LATAR BELAKANG ===
     function createParticles() {
       const container = document.getElementById('particles-container');
@@ -564,10 +656,9 @@
       }, 250);
     });
   
-    // === GOOGLE DRIVE SLIDESHOW LOGIC ===
+    // === GOOGLE DRIVE SLIDESHOW LOGIC (GALERI KEGIATAN) ===
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyVkq7JE3plPu3X0jGD08_pZ2jZfWcE_ls0Z6zmW6TYmd3lBKOBQV9Jgl9Bq8ipZyBYxQ/exec';
 
-    // Deklarasi variabel HANYA SATU KALI
     let currentSlide = 0;
     let totalSlides = 0;
     let autoPlayTimer;
@@ -642,7 +733,7 @@
       else currentSlide = index;
 
       const slides = document.querySelectorAll('.carousel-slide');
-      const dots = document.querySelectorAll('.carousel-dot');
+      const dots = document.querySelectorAll('.carousel-dot:not(.financial-carousel-dot)');
 
       slides.forEach((slide, idx) => {
         if (idx === currentSlide) {
@@ -677,6 +768,128 @@
     }
 
     document.addEventListener('DOMContentLoaded', fetchGoogleDrivePhotos);
+
+
+    // === GOOGLE DRIVE SLIDESHOW LOGIC (LAPORAN KEUANGAN) ===
+    
+    // PENTING: Ganti URL di bawah ini dengan URL Apps Script baru khusus untuk Folder Laporan Keuangan
+    const FINANCIAL_WEB_APP_URL = 'URL_APPS_SCRIPT_FOLDER_KEUANGAN_DISINI';
+    
+    let finCurrentSlide = 0;
+    let finTotalSlides = 0;
+    let finAutoPlayTimer;
+
+    async function fetchFinancialReports() {
+      try {
+        if (FINANCIAL_WEB_APP_URL === 'URL_APPS_SCRIPT_FOLDER_KEUANGAN_DISINI') {
+          document.getElementById('financial-slides-wrapper').innerHTML = '<p class="text-slate-500">Silakan masukkan URL Web App untuk Laporan Keuangan di file HTML.</p>';
+          return;
+        }
+
+        const response = await fetch(FINANCIAL_WEB_APP_URL);
+        const imageUrls = await response.json();
+        
+        const slidesWrapper = document.getElementById('financial-slides-wrapper');
+        const dotsWrapper = document.getElementById('financial-dots-wrapper');
+        const btnPrev = document.getElementById('financial-carousel-prev');
+        const btnNext = document.getElementById('financial-carousel-next');
+
+        slidesWrapper.innerHTML = '';
+        dotsWrapper.innerHTML = '';
+
+        if (imageUrls.error) {
+          slidesWrapper.innerHTML = `<p class="text-red-500">Gagal memuat: ${imageUrls.error}</p>`;
+          return;
+        }
+
+        if (!imageUrls || imageUrls.length === 0) {
+          slidesWrapper.innerHTML = '<p class="text-slate-500">Belum ada laporan di folder Google Drive.</p>';
+          return;
+        }
+
+        finTotalSlides = imageUrls.length;
+
+        imageUrls.forEach((url, index) => {
+          const slideDiv = document.createElement('div');
+          slideDiv.className = `financial-carousel-slide w-full h-full absolute top-0 left-0 transition-opacity duration-500 ${index === 0 ? 'active opacity-100 z-10' : 'opacity-0 z-0'}`;
+          // Menggunakan object-contain agar struk/kertas laporan tidak terpotong saat ditampilkan
+          slideDiv.innerHTML = `<img src="${url}" alt="Laporan Keuangan ${index + 1}" class="w-full h-full object-contain bg-slate-100">`;
+          slidesWrapper.appendChild(slideDiv);
+
+          const dotBtn = document.createElement('button');
+          dotBtn.className = `financial-carousel-dot carousel-dot w-3 h-3 rounded-full ${index === 0 ? 'active bg-emerald-600 scale-125' : 'bg-emerald-300'}`;
+          dotBtn.setAttribute('data-index', index);
+          
+          dotBtn.addEventListener('click', () => {
+            showFinSlide(index);
+            resetFinAutoPlay();
+          });
+          
+          dotsWrapper.appendChild(dotBtn);
+        });
+
+        if (finTotalSlides > 1) {
+          btnPrev.classList.remove('hidden');
+          btnNext.classList.remove('hidden');
+          
+          btnNext.addEventListener('click', () => { nextFinSlide(); resetFinAutoPlay(); });
+          btnPrev.addEventListener('click', () => { prevFinSlide(); resetFinAutoPlay(); });
+
+          startFinAutoPlay();
+          
+          const container = document.getElementById('financial-slides-wrapper').parentElement;
+          container.addEventListener('mouseenter', () => clearInterval(finAutoPlayTimer));
+          container.addEventListener('mouseleave', startFinAutoPlay);
+        }
+
+      } catch (error) {
+        document.getElementById('financial-slides-wrapper').innerHTML = '<p class="text-red-500">Terjadi kesalahan koneksi saat memuat Laporan Keuangan.</p>';
+        console.error('Error fetching financial reports:', error);
+      }
+    }
+
+    function showFinSlide(index) {
+      if (index >= finTotalSlides) finCurrentSlide = 0;
+      else if (index < 0) finCurrentSlide = finTotalSlides - 1;
+      else finCurrentSlide = index;
+
+      const slides = document.querySelectorAll('.financial-carousel-slide');
+      const dots = document.querySelectorAll('.financial-carousel-dot');
+
+      slides.forEach((slide, idx) => {
+        if (idx === finCurrentSlide) {
+          slide.classList.add('active', 'opacity-100', 'z-10');
+          slide.classList.remove('opacity-0', 'z-0');
+        } else {
+          slide.classList.remove('active', 'opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === finCurrentSlide) {
+          dot.classList.add('active', 'bg-emerald-600', 'scale-125');
+          dot.classList.remove('bg-emerald-300');
+        } else {
+          dot.classList.remove('active', 'bg-emerald-600', 'scale-125');
+          dot.classList.add('bg-emerald-300');
+        }
+      });
+    }
+
+    function nextFinSlide() { showFinSlide(finCurrentSlide + 1); }
+    function prevFinSlide() { showFinSlide(finCurrentSlide - 1); }
+    
+    function startFinAutoPlay() {
+      clearInterval(finAutoPlayTimer);
+      finAutoPlayTimer = setInterval(nextFinSlide, autoPlayInterval);
+    }
+    function resetFinAutoPlay() {
+      startFinAutoPlay();
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchFinancialReports);
+
 
     // === ELEMENT SDK CONFIG ===
     const defaultConfig = {
